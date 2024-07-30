@@ -1,0 +1,125 @@
+#include <memory>
+#include <cstring>
+#include <iostream>
+#define DEBUG 0
+
+// #include <self/functional.h>
+// using namespace util;
+
+using namespace std;
+struct SliceOutOfBoundError {};
+
+class Slice {
+private:
+    std::shared_ptr<int> buf;
+    size_t base;
+    size_t length;
+    size_t capacity;
+
+    static void free_buf(int* buf) {
+        delete[] buf;
+    }
+
+    static std::shared_ptr<int> allocate_buf(size_t size) {
+        return std::shared_ptr<int>(new int[size], free_buf);
+    }
+
+public:
+    Slice(size_t size, int initial = 0) {
+        // TODO
+        this->base = 0;
+        this->length = size;
+        this->capacity = 2 * size;
+        this->buf = allocate_buf(this->capacity);
+        for (int i = 0; i < this->length; i++) {
+            this->buf.get()[i] = initial;
+        }
+    }
+
+    Slice(const Slice& other) {
+        // TODO
+        this->buf = other.buf;
+        this->base = other.base;
+        this->length = other.length;
+        this->capacity = other.capacity;
+    }
+
+    static Slice copy_from(const Slice& other) {
+        // TODO
+        Slice Newslice(other.length);
+        for (size_t i = 0; i < other.length; i++) {
+            Newslice.buf.get()[i] = other.buf.get()[other.base+i];
+        }
+        return Newslice;
+    }
+
+    void operator=(const Slice& other) {
+        // TODO
+        if (this != &other) {
+            this->buf = other.buf;
+            this->base = other.base;
+            this->length = other.length;
+            this->capacity = other.capacity;
+        }
+
+    }
+
+    void append(int x) {
+        // TODO 
+        if (this->base + this->length < this->capacity) {
+            this->buf.get()[this->base + this->length] = x;
+            this->length++;
+        }
+        else {
+            size_t newcapacity = (this->length + 1) * 2;
+            std::shared_ptr<int> newbuf = allocate_buf(newcapacity);
+            for (size_t i = 0; i < this->length; i++) {
+                newbuf.get()[i] = this->buf.get()[this->base + i];
+            }
+            newbuf.get()[this->length] = x;
+            this->length++;
+            this->capacity = newcapacity;
+            this->buf = newbuf;
+            this->base = 0;
+        }
+    }
+
+    Slice operator[](std::pair<size_t, size_t> range) {
+        // TODO
+        size_t l = range.first;
+        size_t r = range.second;
+        if (l > r || r>this->capacity) {
+            throw SliceOutOfBoundError();
+        }
+            Slice Newslice(*this);
+            Newslice.length = r - l;
+            Newslice.base += l;
+            return Newslice;
+ 
+    }
+
+    int& operator[](size_t pos) {
+        // TODO
+        if (pos >= this->length) {
+            throw SliceOutOfBoundError();
+        }
+
+        return this->buf.get()[this->base + pos];
+
+    }
+
+    void print() {
+        for (int i = 0; i < this->length; ++i) {
+            std::cout << this->buf.get()[this->base + i] << ' ';
+        }
+        std::cout << '\n';
+    }
+
+    size_t len() {
+        return this->length;
+    }
+
+    size_t cap() {
+        return this->capacity;
+    }
+};

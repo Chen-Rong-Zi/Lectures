@@ -1,0 +1,26 @@
+# 1. how to find the cmd help manual
+
+# 2. file system priority
+    2.1. how to use chmod? (only add user priority and so on)
+        u,    a,   o
+        user, all, other
+        r, w, x
+        4, 2, 1
+
+# 3. shell and shell-related, which part is parsed by shell and which part is parsed by cmd?
+
+# 4. shell script special variable; function; process substitute
+
+# 5. vim editor; mode; how to enter and exit;
+
+# 6. regulation expression
+
+# 7. data process using pipeline
+sort
+uniq
+sed
+awk
+tr
+grep
+
+# 8. all cmd in ppt, the meaning of each parameter

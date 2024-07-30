@@ -1,0 +1,5 @@
+请通过bash脚本和shell命令组合找出你最近五次启动Linux系统的最长启动时间、最短启动时间，并计算出平均启动时间。
+注1：你可以执行shell命令sudo reboot重启Linux系统。
+注2：你需要查询journalctl命令的手册，了解如何查看系统的启动时间。
+注3：journalctl命令输出的有关系统启动时间的日志信息类似下面这样：
+Jul 06 09:49:32 ubuntu systemd[1]: Startup finished in 3.634s (kernel) + 4.283s (userspace) = 7.918s.

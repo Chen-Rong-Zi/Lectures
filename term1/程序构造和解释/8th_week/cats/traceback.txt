@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/site-packages/pudb/__init__.py", line 158, in runscript
+    dbg._runscript(mainpyfile)
+  File "/usr/lib/python3.11/site-packages/pudb/debugger.py", line 526, in _runscript
+    self.run(statement)
+  File "/usr/lib/python3.11/bdb.py", line 600, in run
+    exec(cmd, globals, locals)
+  File "<string>", line 1, in <module>
+  File "cats.py", line 163, in <module>
+    autocorrect("cul", ["culture", "cult", "cultivate"], abs_diff, 10)
+  File "cats.py", line 158, in autocorrect
+    if diff_function(typed_word, word, limit) < dic[temp]:
+                                                ~~~^^^^^^
+KeyError: 'cult'

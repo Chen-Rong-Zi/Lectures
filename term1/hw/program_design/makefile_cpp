@@ -1,0 +1,4 @@
+compile:
+	g++ -Wall -Werror -g -o /home/rongzi/cProgram/a.out ${src}
+clean:
+	rm -rf "/home/rongzi/cProgram/a.out"

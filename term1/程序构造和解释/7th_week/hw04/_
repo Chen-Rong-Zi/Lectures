@@ -1,0 +1,4 @@
+
+处理 InsertCharPre 自动命令 "*"..function Complete 时发生错误:
+第    5 行:
+E492: 不是编辑器的命令:         feedkeys("\<c-n>\<c-p>")

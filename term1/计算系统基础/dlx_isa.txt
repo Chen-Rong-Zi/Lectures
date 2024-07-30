@@ -1,0 +1,40 @@
+
+DLX（Delayed Load eXecute）是一种RISC（Reduced Instruction Set Computing）架构，其指令集包含一组简洁而强大的指令。以下是DLX指令集的一些常见指令：
+
+算术运算指令：
+
+ADD (Addition)
+SUB (Subtraction)
+MUL (Multiplication)
+DIV (Division)
+AND (Bitwise AND)
+OR (Bitwise OR)
+XOR (Bitwise XOR)
+数据传输指令：
+
+LD (Load)
+ST (Store)
+比较和分支指令：
+
+BEQ (Branch if Equal)
+BNE (Branch if Not Equal)
+BLT (Branch if Less Than)
+BLE (Branch if Less Than or Equal)
+BGT (Branch if Greater Than)
+BGE (Branch if Greater Than or Equal)
+无条件分支指令：
+
+JMP (Jump)
+逻辑移位指令：
+
+SLL (Logical Shift Left)
+SRL (Logical Shift Right)
+算术移位指令：
+
+SRA (Arithmetic Shift Right)
+陷阱指令：
+
+TRAP (Software Exception)
+NOP（No Operation）：
+
+什么都不做的指令，通常用于占位或延时。
